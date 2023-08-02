@@ -3,16 +3,26 @@ import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnchorLock, faBars, faTimes, faWater } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
+import { Button } from './Button';
 
 
-function Navbar() {
+function Navbar(){
     
     const [iconeAtual, setIconeAtual] = useState(faBars); // inicia com valor Falso para alterar
-    
-    const alteraClique = () => setIconeAtual(iconeAtual == faBars ? faTimes : faBars)
-
+    const alteraClique = () => setIconeAtual(iconeAtual == faBars ? faTimes : faBars);
     const fecharMenuMobile = () => alteraClique;
-  return (
+
+    const [button, setButton] = useState(true);
+    const showButton = () => {
+        if (window.innerWidth <= 960){ setButton(false)
+        } else {
+             setButton(true);
+            }
+    };
+
+    window.addEventListener('resize', showButton);
+
+    return (
     <>
         <nav className="navbar">
             <div className="navbar-container">  
@@ -44,7 +54,7 @@ function Navbar() {
                             </Link>
                             </li>
                     </ul>
-
+                    {button && <Button buttonStyle='btn-vazado'> CADASTRO</Button>}
 
             </div>
         </nav>
@@ -52,4 +62,5 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Navbar;
+
