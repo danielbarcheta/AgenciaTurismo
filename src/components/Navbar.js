@@ -13,6 +13,7 @@ function Navbar(){
     const fecharMenuMobile = () => alteraClique;
 
     const [button, setButton] = useState(true);
+
     const showButton = () => {
         if (window.innerWidth <= 960){ setButton(false)
         } else {
@@ -27,11 +28,13 @@ function Navbar(){
         <nav className="navbar">
             <div className="navbar-container">  
                 <Link to='/' className='navbar-logo'>
-                   TESTE <FontAwesomeIcon icon={faWater} className="icone-logo" />
+                   TravelAgency <FontAwesomeIcon icon={faWater} className="icone-logo" />
                 </Link>
                     <div className='icone-menu'>
                          <FontAwesomeIcon icon={iconeAtual} onClick={alteraClique} />
+                         <i className={alteraClique}/>
                     </div>
+
                     <ul className={iconeAtual == 'faTimes' ? 'nav-menu-active' : 'nav-menu'}>
                         <li classname='nav-item'>
                             <Link to='/'className='nav-links'onClick={fecharMenuMobile}>
